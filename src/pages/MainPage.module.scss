@@ -1,0 +1,15 @@
+.wrapper{
+    background-color: $main-bg;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.inner{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+}
+

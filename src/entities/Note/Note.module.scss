@@ -1,0 +1,52 @@
+.Note {
+  max-width: 250px;
+  min-height: 300px;
+  width: 100%;
+  background-color: $warning;
+  word-wrap: break-word;
+  padding: 20px 10px 10px 10px;
+  cursor: pointer;
+  position: relative;
+  transition: 0.2s box-shadow;
+  font-size: 24px;
+  color: $dark;
+  border-radius: 4px;
+
+  &:hover .delete {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &:hover .changeColors {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.delete,
+.changeColors {
+  position: absolute;
+  opacity: 0;
+  transition: 0.2s opacity, 0.2s transform;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.delete {
+  top: -10px;
+  left: -10px;
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.changeColors {
+  bottom: 5px;
+  right: 5px;
+  z-index: 1;
+}
+
+.editable {
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.1);
+  color: $black;
+}
