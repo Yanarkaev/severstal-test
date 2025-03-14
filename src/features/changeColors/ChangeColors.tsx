@@ -11,14 +11,15 @@ interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const ChangeColors = ({ className = "", _id }: IProps) => {
+  const dispatch = useAppDispatch();
+
   const [colors, setColors] = useState({
     textColor: "",
     backgroundColor: "",
   });
+  const [isChangeable, setIsChangeable] = useState(false);
 
   const { textColor, backgroundColor } = colors;
-
-  const dispatch = useAppDispatch();
 
   const handleChangeColor = (e: ChangeEvent<HTMLInputElement>) => {
     setColors((prev) => {
@@ -43,13 +44,12 @@ export const ChangeColors = ({ className = "", _id }: IProps) => {
     }
   }, [_id, textColor, backgroundColor, dispatch]);
 
-  const [isChangeable, setIsChangeable] = useState(false);
   return (
     <div className={`${s.ChangeColors} ${className}`}>
       {isChangeable && (
         <div className={s.inner}>
           <div className={s.textColor}>
-            Цвет текста:{" "}
+            <span>Цвет текста:</span>
             <input
               type="color"
               name="textColor"
@@ -58,7 +58,7 @@ export const ChangeColors = ({ className = "", _id }: IProps) => {
           </div>
 
           <div className={s.noteColor}>
-            Цвет фона:{" "}
+            <span>Цвет фона:</span>
             <input
               type="color"
               name="backgroundColor"
