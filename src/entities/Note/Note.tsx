@@ -11,7 +11,12 @@ export const Note = ({ text, _id, textColor, backgroundColor }: IProps) => {
       style={{ color: textColor, backgroundColor: backgroundColor }}
     >
       <DeleteNote className={s.delete} _id={_id} />
-      <ChangeColors _id={_id} className={s.changeColors} textColor={textColor} backgroundColor={backgroundColor}/>
+      <ChangeColors
+        _id={_id}
+        className={s.changeColors}
+        textColor={textColor}
+        backgroundColor={backgroundColor}
+      />
       <EditNote text={text} _id={_id} />
     </div>
   );
