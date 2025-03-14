@@ -7,7 +7,11 @@
     background-color: $success;
     border-radius: 50%;
     font-size: 20px;
-    font-weight: 600;
     color: $white;
     cursor: pointer;
+    transition: .2s transform;
+
+    &:hover{
+        transform: scale(1.2);
+    }
 }

@@ -30,6 +30,7 @@ export const MainPage = () => {
 
   return (
     <div className={s.wrapper}>
+      <h1 className={s.title}>Note tickets</h1>
       <Container className={s.inner}>
         {list &&
           list.map(({ _id, text, textColor, backgroundColor }) => {

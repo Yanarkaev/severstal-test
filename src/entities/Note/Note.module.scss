@@ -5,10 +5,10 @@
   word-wrap: break-word;
   padding: 20px 10px 10px 10px;
   position: relative;
-  transition: 0.2s box-shadow;
   font-size: 24px;
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
   color: $dark;
-  border-radius: 4px;
 
   &:hover .delete {
     opacity: 1;
@@ -33,6 +33,8 @@
 .delete {
   top: -10px;
   left: -10px;
+  cursor: pointer;
+
   &:hover {
     transform: scale(1.2);
   }
@@ -42,9 +44,4 @@
   bottom: 5px;
   right: 5px;
   z-index: 1;
-}
-
-.editable {
-  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.1);
-  color: $black;
 }

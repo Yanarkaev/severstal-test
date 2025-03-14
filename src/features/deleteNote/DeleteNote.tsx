@@ -2,6 +2,7 @@ import React from "react";
 import s from "./DeleteNote.module.scss";
 import { useAppDispatch } from "../../app/store/hooks";
 import { noteActions } from "../../entities/Note/model/slice/noteSlice";
+import { MinusIcon } from "../../shared/icons";
 
 interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   _id: number;
@@ -15,12 +16,8 @@ export const DeleteNote = ({ className = "", _id, ...props }: IProps) => {
     dispatch(noteActions.deleteNote(_id));
   };
   return (
-    <div
-      className={`${s.DeleteNote} ${className}`}
-      {...props}
-      onClick={deleteNote}
-    >
-      -
+    <div className={`${s.DeleteNote} ${className}`} {...props} onClick={deleteNote}>
+      <MinusIcon />
     </div>
   );
 };

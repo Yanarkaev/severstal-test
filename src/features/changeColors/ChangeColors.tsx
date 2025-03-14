@@ -7,19 +7,24 @@ import { noteActions } from "../../entities/Note/model/slice/noteSlice";
 
 interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   _id: number;
+  textColor?: string;
+  backgroundColor?: string;
   className?: string;
 }
 
-export const ChangeColors = ({ className = "", _id }: IProps) => {
+export const ChangeColors = ({
+  className = "",
+  _id,
+  textColor = "",
+  backgroundColor = "",
+}: IProps) => {
   const dispatch = useAppDispatch();
 
   const [colors, setColors] = useState({
-    textColor: "",
-    backgroundColor: "",
+    textColor: textColor,
+    backgroundColor: backgroundColor,
   });
   const [isChangeable, setIsChangeable] = useState(false);
-
-  const { textColor, backgroundColor } = colors;
 
   const handleChangeColor = (e: ChangeEvent<HTMLInputElement>) => {
     setColors((prev) => {
@@ -33,16 +38,16 @@ export const ChangeColors = ({ className = "", _id }: IProps) => {
   );
 
   useEffect(() => {
-    if (textColor || backgroundColor) {
+    if (colors.textColor || colors.backgroundColor) {
       dispatch(
         noteActions.changeNoteColors({
           _id,
-          textColor: textColor,
-          backgroundColor: backgroundColor,
+          textColor: colors.textColor,
+          backgroundColor: colors.backgroundColor,
         })
       );
     }
-  }, [_id, textColor, backgroundColor, dispatch]);
+  }, [_id, colors.textColor, colors.backgroundColor, dispatch]);
 
   return (
     <div className={`${s.ChangeColors} ${className}`}>
@@ -54,6 +59,7 @@ export const ChangeColors = ({ className = "", _id }: IProps) => {
               type="color"
               name="textColor"
               onChange={debouncedHandleChangeColor}
+              defaultValue={colors.textColor}
             />
           </div>
 
@@ -63,6 +69,7 @@ export const ChangeColors = ({ className = "", _id }: IProps) => {
               type="color"
               name="backgroundColor"
               onChange={debouncedHandleChangeColor}
+              defaultValue={colors.backgroundColor}
             />
           </div>
         </div>

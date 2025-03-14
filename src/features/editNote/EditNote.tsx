@@ -24,15 +24,13 @@ export const EditNote = ({ _id, text }: IProps) => {
     );
   };
 
-  console.log(`${value}`);
-
   const handleEdit = () => {
     dispatch(noteActions.editNote({ _id, text: value }));
   };
 
   useEffect(() => {
     window.addEventListener("beforeunload", handleEdit);
-    
+
     return () => {
       window.removeEventListener("beforeunload", handleEdit);
     };
